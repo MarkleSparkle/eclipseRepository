@@ -5,6 +5,8 @@ public class FinalBank {
 
 	public static void mainMenu(){//main menu prints the main menu 
 
+		System.out.println("TEST 1");
+		
 		System.out.println("$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$");
 		System.out.println("$                                           $");
 		System.out.println("$      Welcome to Online Banking V2.1       $");
