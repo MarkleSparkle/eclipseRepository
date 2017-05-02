@@ -6,6 +6,8 @@ public class FinalBank {
 	public static void mainMenu(){//main menu prints the main menu 
 
 		System.out.println("TEST 1");
+		System.out.println("Test 2");
+		System.out.println("Test 3");
 		
 		System.out.println("$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$");
 		System.out.println("$                                           $");
