@@ -4,9 +4,30 @@ import java.util.Scanner;
  * All Rights Reserved
  */
 
-public class Board {
+public class Board{
 
-	static boolean DEBUGGABLE = true;
+	//the Board class's responsibility is to do all the behind-the-scenes work, from printing the board (arrays and all), to 
+	//creating the arrays of boats. 
+
+	//the Board class does the following:
+	{
+		//prints a 2D array (of Positions) in an ugly but easy-to-see form. Each state is printed out as it is saved in the array (unchanged)
+		//controls the printing of an array that is given to it in a board-like fashion (including the side indexes and pretty looking board graphics).
+		//prints the board that shows the shots the computer has taken on the player
+		//prints the board that shows the shots the player has taken on the computer
+		//prints the game (wraps up the previous two methods in a fancy way (with titles)
+		//controls the player's shot at the computer (checks if the computer has a boat in the spot the player selected and updates the comp's array accordingly)
+		//takes in the coordinate of the player's shot "C4" and converts it into a usable coordinate "3,4".
+		//allows the player to place their own boats
+		//controls how the computer shoots and changes the player's array accordingly
+		//generates an empty array of new Positions (all open water)
+		//generates a completed array of filled in Positions (including boats and open water)
+		//checks an array to conclude if it has been completely cleared of boats (therefore initiating a game over)
+		//controls a game over
+		//AND
+		//prints a legend of how to read the printed boards
+	}
+	static boolean DEBUGGABLE = false;
 
 	public static void print2D(Position[][] array, int dashType, String title) {//prints array (for testing purpose only)
 		String msg="";
@@ -94,7 +115,6 @@ public class Board {
 		}
 		privatePrintBoard(board);//prints the board
 	}
-
 
 	public static void printGame(Position[][] player, Position[][] computer){
 		//prints the player's part of the board (player's view)
@@ -188,9 +208,9 @@ public class Board {
 		int [] rc = new int[2];
 
 		/***************************************FIRST BOAT***************************************/
-		
+
 		//TODO, not sure what happened here but.... debug the crap out of it
-		
+
 		Ess.output("Now place the Aircraft Carrier (5 spaces long)");//state of "5" //should be 5 of them
 		do{
 			Ess.output("Enter the point you would like to start your ship on. \"A3\"");
@@ -274,7 +294,7 @@ public class Board {
 			}
 		}while(exception==true);
 		Ess.output("GREAT! Your boat is placed!");
-		
+
 		printGame(player,computer);
 
 		/***************************************SECOND BOAT***************************************/
@@ -361,7 +381,7 @@ public class Board {
 		Ess.output("GREAT! Your boat is placed!");
 
 		printGame(player,computer);
-		
+
 		/***************************************THIRD BOAT***************************************/
 		Ess.output("Now place the Submarine (3 spaces long)");//state of "7" //should be 3
 		do{
@@ -442,9 +462,9 @@ public class Board {
 			}
 		}while(exception==true);
 		Ess.output("GREAT! Your boat is placed!");
-		
+
 		printGame(player,computer);
-		
+
 		/***************************************FOURTH BOAT***************************************/
 		Ess.output("Now place the Destroyer (3 spaces long)");//state of "8" //should be 3
 
@@ -526,9 +546,9 @@ public class Board {
 			}
 		}while(exception==true);
 		Ess.output("GREAT! Your boat is placed!");
-		
+
 		printGame(player,computer);
-		
+
 		/***************************************FIFTH BOAT***************************************/
 		Ess.output("Now place the Partrol Boat (2 spaces long)");//state of "9" //should be 2
 
@@ -606,9 +626,9 @@ public class Board {
 			}
 		}while(exception==true);
 		Ess.output("GREAT! Your boat is placed!");
-		
+
 		printGame(player,computer);
-		
+
 		/***************************************FINAL BOAT CHECK******************************************/
 
 		int first = 0, second = 0, third = 0, fourth = 0, fifth = 0;
@@ -621,7 +641,7 @@ public class Board {
 				if(player[i][j].getState()==9) fifth++;
 			}
 		}
-		
+
 		if(first == 5 && second == 4 && third == 3 && fourth == 3 && fifth == 2){//if they are, WE'RE GOOD
 			Ess.output("Looks like we've got everything! Let's play!");
 		}
@@ -630,10 +650,9 @@ public class Board {
 			Ess.DEBUG(DEBUGGABLE, "first  = "+first+" \\\\ second = "+second+" \\\\ third = "+third+
 					" \\\\ fourth = "+fourth+" \\\\ fifth = "+fifth);
 		}
-		
+
 		return player;
 	}
-
 
 	public static void computerFires(Position[][]player, Position[][]computer){
 		boolean shot=false;
@@ -666,7 +685,6 @@ public class Board {
 		}while(shot==false);
 		Ess.DEBUG(DEBUGGABLE, "state after = "+player[row][column].getState());
 	}
-
 
 	public static Position[][] generatePlayer(){
 

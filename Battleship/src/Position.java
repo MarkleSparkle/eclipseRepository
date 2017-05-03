@@ -3,6 +3,13 @@
  */
 
 public class Position {
+	
+	//the Position class is an Object.
+	
+	//very simple. It only holds a state like any other data type would. 
+	//it contributes to the state that any position could be. 2,3,5-9
+	
+	//this Object is meant to be used in an array of positions where each position could be different
 
 	int state;//state (0 - open water, 2 - hit, (5-9) is a boat 
 	
