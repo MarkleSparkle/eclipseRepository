@@ -23,17 +23,7 @@ public class Board {
 				}
 			}
 		}
-
-		if (dashType != 0)
-			Ess.dashSeperator(dashType);
-		if (title.equals(""))
-			title = "PRINT ARRAY";
-		Ess.output(" ~ " + title + " ~ ");
-		Ess.output(" Positions: " + array[0].length+"x"+array[1].length);
-		Ess.output(" FULL PRINT:\n\n"+ msg);
-		if (dashType != 0)
-			Ess.dashSeperator(dashType);
-
+		Ess.output(msg);
 	}
 
 	private static void privatePrintBoard(String[][] array) {//prints an array in a board format
@@ -719,24 +709,24 @@ public class Board {
 
 			/*START ASSIGNING THE COMPUTER'S SHIPS*/
 
-			//FIRST SHIP (5)
+			/**************************************************FIRST SHIP (5)**************************************************/
 			Ess.DEBUG(DEBUGGABLE, "first - random: "+random+" \\\\ secondRandom: "+secondRandom);
 			if(random<=10){//the ships will be printed in a column (A-J)
 				selected[0]=random;
-				random = (int) (5*Math.random());
+				random = (int) (6*Math.random());
 				for(int i=0; i<5; i++){//prints for each part of the ship
 					array[random+i][secondRandom].setState(5);
 				}
 			}
 
 			else{//this ship will be printed in a column (0-9)
-				random = (int) (5*Math.random());
+				random = (int) (6*Math.random());
 				for(int i=0; i<5; i++){//prints for each part of the ship
 					array[random][secondRandom+i].setState(5);
 				}
 			}
-			//SECOND SHIP (4)
-			secondRandom = (int) (6*Math.random());
+			/**************************************************SECOND SHIP (4)**************************************************/
+			secondRandom = (int) (7*Math.random());
 			do{//doing random while 
 				random = (int) (21*Math.random());
 			}while(random==selected[0]);
@@ -744,20 +734,20 @@ public class Board {
 
 			if(random<=10){//the ships will be printed in a column (A-J)
 				selected[1]=random;
-				random = (int) (5*Math.random());
+				random = (int) (7*Math.random());
 				for(int i=0; i<4; i++){//prints for each part of the ship
 					array[random+i][secondRandom].setState(6);
 				}
 			}
 
 			else{//this ship will be printed in a column (0-9)
-				random = (int) (5*Math.random());
+				random = (int) (7*Math.random());
 				for(int i=0; i<4; i++){//prints for each part of the ship
 					array[random][secondRandom+i].setState(6);
 				}
 			}
-			//THIRD SHIP (3)
-			secondRandom = (int) (6*Math.random());
+			/**************************************************THIRD SHIP (3)**************************************************/
+			secondRandom = (int) (8*Math.random());
 			do{//doing random while 
 				random = (int) (21*Math.random());
 			}while(random==selected[0]&&random==selected[1]);
@@ -765,20 +755,20 @@ public class Board {
 
 			if(random<=10){//the ships will be printed in a column (A-J)
 				selected[2]=random;
-				random = (int) (5*Math.random());
+				random = (int) (8*Math.random());
 				for(int i=0; i<3; i++){//prints for each part of the ship
 					array[random+i][secondRandom].setState(7);
 				}
 			}
 
 			else{//this ship will be printed in a column (0-9)
-				random = (int) (5*Math.random());
+				random = (int) (8*Math.random());
 				for(int i=0; i<3; i++){//prints for each part of the ship
 					array[random][secondRandom+i].setState(7);
 				}
 			}
-			//FOURTH SHIP (3)
-			secondRandom = (int) (6*Math.random());
+			/**************************************************FOURTH SHIP (3)**************************************************/
+			secondRandom = (int) (8*Math.random());
 			do{//doing random while 
 				random = (int) (21*Math.random());
 			}while(random==selected[0]&&random==selected[1]&&random==selected[2]);
@@ -786,20 +776,20 @@ public class Board {
 
 			if(random<=10){//the ships will be printed in a column (A-J)
 				selected[3]=random;
-				random = (int) (5*Math.random());
+				random = (int) (8*Math.random());
 				for(int i=0; i<3; i++){//prints for each part of the ship
 					array[random+i][secondRandom].setState(8);
 				}
 			}
 
 			else{//this ship will be printed in a column (0-9)
-				random = (int) (5*Math.random());
+				random = (int) (8*Math.random());
 				for(int i=0; i<3; i++){//prints for each part of the ship
 					array[random][secondRandom+i].setState(8);
 				}
 			}
-			//FIFTH SHIP (2)
-			secondRandom = (int) (6*Math.random());
+			/**************************************************FIFTH SHIP (2)**************************************************/
+			secondRandom = (int) (9*Math.random());
 			do{//doing random while 
 				random = (int) (21*Math.random());
 			}while(random==selected[0]&&random==selected[1]&&random==selected[2]&&random==selected[3]);
@@ -807,20 +797,20 @@ public class Board {
 
 			if(random<=10){//the ships will be printed in a column (A-J)
 				selected[4]=random;
-				random = (int) (5*Math.random());
+				random = (int) (9*Math.random());
 				for(int i=0; i<2; i++){//prints for each part of the ship
 					array[random+i][secondRandom].setState(9);
 				}
 			}
 
 			else{//this ship will be printed in a column (0-9)
-				random = (int) (5*Math.random());
+				random = (int) (9*Math.random());
 				for(int i=0; i<2; i++){//prints for each part of the ship
 					array[random][secondRandom+i].setState(9);
 				}
 			}
 
-			/*CHECKING IF ALL OF THE COMPONENTS ARE IN THE AREA*/
+			/********************************CHECKING IF ALL OF THE COMPONENTS ARE IN THE AREA********************************/
 
 			//by the end of the loops:
 			int shipOne=0;//ship one should equal 5

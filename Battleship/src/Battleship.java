@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Battleship {
 
 	static Position[][] player = Board.generatePlayer();
-	static Position[][] computer = Board.generateComputer();
+	static Position[][] computer;
 	static boolean DEBUGGABLE=false;
 
 
@@ -25,7 +25,6 @@ public class Battleship {
 			player=Board.generateComputer();
 		}
 		else{
-			//TODO allow the user to set their own boats OR I could chose to neglect this function until I've finished the program
 			player=Board.playerPlace(player, computer);
 		}
 
@@ -33,7 +32,7 @@ public class Battleship {
 		do{
 
 			Ess.output("Computer's TURN"); Ess.lines(5); Ess.output("		Waiting...");Ess.lines(5);
-			Thread.sleep(3000);
+			Thread.sleep(1500);
 			Board.computerFires(player, computer);
 
 			//player's turn
@@ -49,7 +48,11 @@ public class Battleship {
 			do{
 				Ess.output("Private! Enter your next fire coordinates! (Ex. \"A3\")");
 
-						input=sc.nextLine();
+				input=sc.nextLine();
+
+				if(input.equalsIgnoreCase("peek")){
+					Board.print2D(computer, 0, "");
+				}
 
 				if(input.length()==2){
 					correctInput=true;
