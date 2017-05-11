@@ -61,7 +61,7 @@ public class Timer {
 		
 		/**						STARTING COMPARE  				**/
 		
-		if(startMins>stopMins) compareHour = (60+startHour)-stopHour;
+/*		if(startMins>stopMins) compareHour = (60+startHour)-stopHour;
 		else compareHour= stopHour-startHour;//this should also work
 		
 		if(startSecs>stopSecs) compareMins = (60+startMins)-stopMins;
@@ -71,9 +71,29 @@ public class Timer {
 		else compareSecs = stopSecs-startSecs;
 		
 		if(compareSecs<0)compareMillis= (1000+stopMillis-startMillis);
-		else compareMillis = stopMillis-startMillis;
+		else compareMillis = stopMillis-startMillis;*/
 		
-		System.out.println("Start: "+startMillis +"   Stop: "+stopMillis+"     Compare: "+compareMillis);
+		
+		compareHour= stopHour-startHour;
+		compareMins= stopMins-startMins; 
+		if(compareMins<0){
+			compareMins= compareMins+60;
+			if(compareHour>0) compareHour--;
+		}
+		
+		compareSecs = stopSecs-startSecs;
+		if(compareSecs<0){
+			compareSecs= compareSecs+60;
+			if(compareMins>0) compareMins--;
+		}
+		
+		compareMillis = stopMillis-startMillis;
+		if(compareMillis<0){
+			compareMillis= compareMillis+60;
+			if(compareSecs>0) compareSecs--;
+		}
+		
+		//System.out.println("Start: "+startMillis +"   Stop: "+stopMillis+"     Compare: "+compareMillis);
 		
 	}
 	

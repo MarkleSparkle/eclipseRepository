@@ -9,8 +9,8 @@ import java.util.Queue;
 
 public class Deck {//only actually uses TWO suits
 
-	static Queue <Card> deck = new LinkedList<Card>();
-	static int pot=0;
+	static Queue <Card> deck = new LinkedList<Card>();//creating a Queue of Cards
+	static int pot=0;///initializing the pot value of this variable
 
 	/*************************************** CREATING ALL THE DANG CARDS ***************************************/
 
@@ -158,20 +158,20 @@ public class Deck {//only actually uses TWO suits
 
 		if (number==10) convertion="T";
 		else if(number==11) convertion="J";
-		else if(number==12) convertion="Q";
+		else if(number==12) convertion="Q";//converting a number (above 9) to its appropriate value
 		else if(number==13) convertion="K";
 		else if (number==14) convertion="A";
-		else convertion = ""+number;
+		else convertion = ""+number;//if the number is below 9 it will just change it to a string
 
-		return convertion;
+		return convertion;//returns the new value
 	}
 
-	public static int convertNumber(int number){
+	public static int convertNumber(int number){//converts the VALUE of all face cards to a 10 and ace to a 1
 		int newNum=0;
 
 		if (number==10) newNum=10;
 		else if(number==11) newNum=10;
-		else if(number==12) newNum=10;
+		else if(number==12) newNum=10;//setting all the values for gameplay purposes
 		else if(number==13) newNum=10;
 		else if (number==14) newNum=1;
 		else newNum = number;
@@ -179,31 +179,31 @@ public class Deck {//only actually uses TWO suits
 		return newNum;
 	}
 
-	public static int getTotal(Queue<Card>hand){
-		Queue<Card> thisHand = new LinkedList<Card>(hand);
+	public static int getTotal(Queue<Card>hand){//returns the total of the cards in a player's hand
+		Queue<Card> thisHand = new LinkedList<Card>(hand);//creates a duplicate of the Queue
 		int total=0;
 
-		while(!thisHand.isEmpty()){
-			total+=convertNumber(thisHand.poll().getNumber());
+		while(!thisHand.isEmpty()){//while the hand is not empty 
+			total+=convertNumber(thisHand.poll().getNumber());//adds to the total until there are no cards left in the hand
 		}
 
 		
-		return total;
+		return total;//returns the total
 	}
 	
 
 	public static void displayGameboard(Queue<Card> play, Queue<Card> comp, int turn){//displays game board of the player that's turn it is
 		int counterPlayer = play.size();
-		int counterDealer = comp.size();
+		int counterDealer = comp.size();//getting the logical size of the Queues
 		Ess.DEBUG(false, "playerSize: "+counterPlayer+". dealerSize: "+counterDealer+".");
-		char tempChar = ' ';
+		char tempChar = ' ';//creating variables
 		String tempStringNum = " ";
 
 		Queue<Card> computer = new LinkedList<Card>(comp);//cloning queues (non destructive)
 		Queue<Card> player = new LinkedList<Card>(play);
 
 		char playerChar[] = new char[2];
-		char computerChar[] = new char[2];
+		char computerChar[] = new char[2];//creating variables to hold the values of the cards in the hand
 		String playerNum[] = new String[2];
 		String computerNum[] = new String[2];
 
@@ -213,8 +213,8 @@ public class Deck {//only actually uses TWO suits
 		playerChar[0]=player.peek().getSuit();
 		playerNum[0]=faceConvert(player.poll().getNumber());
 
-		computerChar[0]=computer.peek().getSuit();
-		computerNum[0]=faceConvert(computer.poll().getNumber());
+		computerChar[0]=computer.peek().getSuit();			//setting the values in the queue to the new variables
+		computerNum[0]=faceConvert(computer.poll().getNumber());//this allows me to use this variable twice without emptying the queue
 
 		playerChar[1]=player.peek().getSuit();
 		playerNum[1]=faceConvert(player.poll().getNumber());
@@ -230,7 +230,7 @@ public class Deck {//only actually uses TWO suits
 		//printing computer's hand 
 		if(turn==1){
 			Ess.title("YOUR TURN"); Ess.lines(1);
-			Ess.margin(8, "Computer's Hand");
+			Ess.margin(8, "Computer's Hand");//prints out the computer's hand in a nice format
 			System.out.println("*************                *************");
 			System.out.println("*************                * "+computerNum[1]+"         *");
 			System.out.println("*************                * "+computerChar[1]+"         *");
@@ -240,7 +240,7 @@ public class Deck {//only actually uses TWO suits
 			System.out.println("*************                *         "+computerNum[1]+" *");
 			System.out.println("*************                *************");
 
-			if(counterDealer>2){
+			if(counterDealer>2){//if the computer has more than 2 cards it prints the others
 				tempStringNum=faceConvert(computer.peek().getNumber());
 				tempChar=computer.poll().getSuit();
 				Ess.lines(1);
@@ -284,7 +284,7 @@ public class Deck {//only actually uses TWO suits
 
 
 			//printing player's hand
-			Ess.margin(11,"Your Hand");
+			Ess.margin(11,"Your Hand");//prints the player's cards in a nice format
 			System.out.println("*************                *************");
 			System.out.println("* "+playerNum[0]+"         *                * "+playerNum[1]+"         *");
 			System.out.println("* "+playerChar[0]+"         *                * "+playerChar[1]+"         *");
@@ -294,7 +294,7 @@ public class Deck {//only actually uses TWO suits
 			System.out.println("*         "+playerNum[0]+" *                *         "+playerNum[1]+" *");
 			System.out.println("*************                *************");
 
-			if(counterPlayer>2){
+			if(counterPlayer>2){//if the player has more than 2 cards, it prints the rest
 				tempStringNum=faceConvert(player.peek().getNumber());
 				tempChar=player.poll().getSuit();
 
@@ -343,7 +343,7 @@ public class Deck {//only actually uses TWO suits
 			//DEALER'S TURN
 			//printing dealer's hand
 			Ess.title("DEALERS'S TURN"); Ess.lines(1);
-			Ess.margin(8, "Computer's Hand");
+			Ess.margin(8, "Computer's Hand");//prints the dealer's hand in a nice format
 			System.out.println("*************                *************");
 			System.out.println("* "+computerNum[0]+"         *                * "+computerNum[1]+"         *");
 			System.out.println("* "+computerChar[0]+"         *                * "+computerChar[1]+"         *");
@@ -353,7 +353,7 @@ public class Deck {//only actually uses TWO suits
 			System.out.println("*         "+computerNum[0]+" *                *         "+computerNum[1]+" *");
 			System.out.println("*************                *************");
 
-			if(counterDealer>2){
+			if(counterDealer>2){//if the computer has more than 2 cards in prints the rest
 				tempStringNum=faceConvert(computer.peek().getNumber());
 				tempChar=computer.poll().getSuit();
 
@@ -400,7 +400,7 @@ public class Deck {//only actually uses TWO suits
 			
 
 			//printing player's hand
-			Ess.margin(11,"Your Hand");
+			Ess.margin(11,"Your Hand");//prints the player's cards in a nice format
 			System.out.println("*************                *************");
 			System.out.println("* "+playerNum[0]+"         *                * "+playerNum[1]+"         *");
 			System.out.println("* "+playerChar[0]+"         *                * "+playerChar[1]+"         *");
@@ -410,7 +410,7 @@ public class Deck {//only actually uses TWO suits
 			System.out.println("*         "+playerNum[0]+" *                *         "+playerNum[1]+" *");
 			System.out.println("*************                *************");
 
-			if(counterPlayer>2){
+			if(counterPlayer>2){//if the player has more than 2 cards if prints the rest
 				tempStringNum=faceConvert(player.peek().getNumber());
 				tempChar=player.poll().getSuit();
 
@@ -453,14 +453,14 @@ public class Deck {//only actually uses TWO suits
 				}
 			}
 			
-			Ess.output("Your hand total is "+getTotal(play));
+			Ess.output("Your hand total is "+getTotal(play));//prints the total of the player's card
 			
 		}	
 	}
 
-	public static void compare(Queue<Card> play, Queue<Card> comp){
+	public static void compare(Queue<Card> play, Queue<Card> comp){//compares the hands of the players (to see who wins the hand)
 		int playerTotal=0;
-		int computerTotal=0;
+		int computerTotal=0;//vars
 
 		Queue<Card> computer = new LinkedList<Card>(comp);//cloning queues (non destructive)
 		Queue<Card> player = new LinkedList<Card>(play);
@@ -472,21 +472,21 @@ public class Deck {//only actually uses TWO suits
 
 		//checking if any BUST
 		if(playerTotal>21)
-			if(computerTotal>21)declareWinner(2, "BUST", 0, 0);
+			if(computerTotal>21)declareWinner(2, "BUST", 0, 0);//declaring the winner based on the condition of the play and the players
 
-		if(computerTotal>21)declareWinner(0, "BUST", 0, 0);
+		if(computerTotal>21)declareWinner(0, "BUST", 0, 0);//declaring the winner based on the condition of the play and the players
 
-		if(playerTotal>21)declareWinner(1, "BUST", 0, 0);		
+		if(playerTotal>21)declareWinner(1, "BUST", 0, 0);//declaring the winner based on the condition of the play and the players		
 	}
 
-	private static void displayHands(int dealerTotal, int playerTotal){
+	private static void displayHands(int dealerTotal, int playerTotal){//displaying the total AFTER the hand is over
 		
 		Ess.lines(1);
 		Ess.output("+-------------------+");//25 -
 		Ess.output("     Dealer: "+dealerTotal+"     ");
 		Ess.output("     Player: "+playerTotal+"      ");
 		Ess.output("+-------------------+");//25 -
-		Ess.lines(1);
+		Ess.lines(1);//prints a line
 		
 	}
 
@@ -494,10 +494,12 @@ public class Deck {//only actually uses TWO suits
 		int players = player; //0 is computer, 1 is player, 2 is both
 		//looks at 
 		
+		//IF THE METHOD RETURNS A 0 THE GAME IS A TIE, IF IT RETURNS A 1 THE PLAYER WON, IF IT RETURNS A -1 THE DEALER WINS 
+		
 		displayHands(dealerValue, playerValue);
 		
 		if(value.equals("BLACKJACK")){//if someone blackjacks
-			if(player==2){
+			if(player==2){//checks who blackjacked
 				System.out.println("Both players blackjack! Return bet");
 				return 0;
 			}
@@ -511,7 +513,7 @@ public class Deck {//only actually uses TWO suits
 			}
 		}
 		else if(value.equals("5CARDDRAW")){//if someone pulls 5 cards
-			if(player==2){
+			if(player==2){//checks who got the 5 card draw
 				System.out.println("Both players pull 5 cards! Return bet");
 				return 0;
 			}
@@ -525,7 +527,7 @@ public class Deck {//only actually uses TWO suits
 			}
 		}
 		else if(value.equals("BUST")){//if someone busts
-			if(player==2){
+			if(player==2){//checks who busts
 				System.out.println("Both players bust! Return bet");
 				return 0;
 			}
@@ -539,19 +541,19 @@ public class Deck {//only actually uses TWO suits
 			}
 		}
 		else{//if none of the above cases apply: compare the values of the cards
-			if(dealerValue==playerValue){
+			if(dealerValue==playerValue){//compares the values of the player's hand to the dealer's hand
 				System.out.println("Card Value is a draw. Return bet");
 				return 0;
 			}
-			else if(dealerValue>playerValue){
+			else if(dealerValue>playerValue){//compares the values of the player's hand to the dealer's hand
 				System.out.println("DEALER's value is higher. Dealer takes all.");
 				return -1;
 			}
-			else if(playerValue>dealerValue){
+			else if(playerValue>dealerValue){//compares the values of the player's hand to the dealer's hand
 				System.out.println("PLAYER's value is higher. You double your bet.");
 				return doublePot();
 			}
-			else{
+			else{//error
 				System.out.println("ERROR - in declare winner");
 				System.out.println("dealerValue: "+dealerValue +" playerValue: "+playerValue);
 			}

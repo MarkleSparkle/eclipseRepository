@@ -12,10 +12,10 @@ class Card {
 		cardSuit=suit;
 	}	
 	
-	public char getSuit(){
+	public char getSuit(){//returns the suit of the card
 		return cardSuit;
 	}
-	public int getNumber(){
+	public int getNumber(){//returns the number of the card
 		return cardNum;
 	}
 }
