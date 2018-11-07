@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Ess {
 	
@@ -363,6 +364,22 @@ public class Ess {
 		}
 
 	}
+	
+	/********************************************* readDouble *********************************************/
+	
+	public static void readDouble(String promptText){
+	
+		Scanner scanner = new Scanner(System.in);
+		Double input;
+		
+		out(promptText+" > ");
+		input = scanner.nextDouble();
+		
+		scanner.close();
+		return input;
+	}
+	
+	//TODO make implementation for all the inputs
 
 	/********************************************* EOP *********************************************/
 
